@@ -25,7 +25,6 @@ function generateStoryMarkup(story, showDelete = false) {
   const showStar = Boolean(currentUser);
 
   const hostName = story.getHostName();
-  console.log(hostName);
   return $(`
       <li id="${story.storyId}">
         ${showStar ? starIconStatus(story, currentUser) : ''}
@@ -115,10 +114,6 @@ $('#sub-form').on('submit',async function(e){
   let storyTitle = document.querySelector`#title`.value;
   let storyUrl = document.querySelector`#url`.value;
   let currentUsername = currentUser.username;
-  console.log(storyAuthor);
-  console.log(storyTitle);
-  console.log(storyUrl);
-  console.log(currentUsername);
   let storyInfo = {'title': storyTitle, 'url': storyUrl, 'author': storyAuthor};
   const story = await storyList.addStory(currentUser,storyInfo);
   const $story = generateStoryMarkup(story);
